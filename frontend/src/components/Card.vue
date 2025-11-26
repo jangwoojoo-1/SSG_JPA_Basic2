@@ -46,7 +46,9 @@ const put = async () => { // ②
         <span class="me-2">{{ props.item.name }}</span>
         <!-- 상품 할인율 -->
         <span class="discount badge bg-danger">{{ props.item.discountPer }}%</span>
-        <span>{{ props.item.comment }}</span>
+      </p>
+      <p class="card-text text-muted flex-grow-1 small">
+        {{ props.item.comment }}
       </p>
       <div class="d-flex justify-content-between align-items-center">
         <button class="btn btn-primary btn-sm" @click="put()">장바구니 담기</button>
@@ -61,16 +63,28 @@ const put = async () => { // ②
 
 <style lang="scss" scoped>
 .card {
-  .img { // ⑤
-    display: inline-block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* 애니메이션 추가 */
+
+  &:hover {
+    transform: translateY(-7px); /* 마우스 올리면 위로 살짝 올라감 */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15) !important; /* 그림자 더 진하게 */
+  }
+
+  .img {
+    display: block;
     width: 100%;
     height: 250px;
     background-size: cover;
     background-position: center;
+    border-top-left-radius: 0.375rem; /* 카드 상단 모서리 둥글게 */
+    border-top-right-radius: 0.375rem;
   }
 
-  .card-body .price { // ⑥
-    text-decoration: line-through;
+  .card-body {
+    .price {
+      text-decoration: line-through;
+      font-size: 0.85rem;
+    }
   }
 }
 </style>

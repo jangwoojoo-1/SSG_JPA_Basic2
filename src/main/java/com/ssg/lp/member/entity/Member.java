@@ -37,4 +37,12 @@ public class Member {
         this.loginPw = loginPw;
         this.address = address;
     }
+
+    public Member(Integer id, String name, String loginId, String loginPw, String address) {
+        this.id = id;
+        this.name = name;
+        this.loginId = loginId;
+        this.loginPw = loginPw;
+        this.address = address;
+    }
 }

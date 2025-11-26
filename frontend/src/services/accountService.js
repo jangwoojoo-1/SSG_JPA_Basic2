@@ -29,9 +29,14 @@ export const logout = () => { // ④
 
 //회원탈퇴 : HTTP POST 메서드로 회원탈퇴 API를 호출하고 응답값을 리턴하는 기능
 export const withdraw = () => {
-    return axios.post("/lp/api/account/withdraw").catch(e=>e.response);
+    return axios.delete("/lp/api/account/withdraw").catch(e=>e.response);
 }
 
 export const getInfo = () => {
     return axios.get("/lp/api/account/info").catch(e => e.response);
+}
+
+// 회원 정보 수정
+export const updateInfo = (args) => {
+    return axios.put("/lp/api/account/info", args).catch(e => e.response);
 }

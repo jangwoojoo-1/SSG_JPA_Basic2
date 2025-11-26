@@ -2,6 +2,7 @@ package com.ssg.lp.account.helper;
 
 import com.ssg.lp.account.dto.AccountJoinRequests;
 import com.ssg.lp.account.dto.AccountLoginRequests;
+import com.ssg.lp.account.dto.AccountUpdateRequests;
 import com.ssg.lp.account.etc.AccountConstant;
 import com.ssg.lp.common.util.HttpUtils;
 import com.ssg.lp.member.entity.Member;
@@ -70,5 +71,11 @@ public class SessionAccountHelper implements AccountHelper {
         } else {
             return memberService.findById(Integer.parseInt(accountId.toString()));
         }
+    }
+
+    @Override
+    public void update(Integer id, AccountUpdateRequests accountRequests) {
+        Member member = accountRequests.toEntity(id);
+        memberService.change(member);
     }
 }

@@ -25,10 +25,14 @@ public class Cart {
     @CreationTimestamp
     private LocalDateTime created;
 
+    @Column(nullable = false)
+    private Integer quantity;
+
     public Cart() {}
     public Cart(Integer memberId, Integer itemId) {
         this.memberId = memberId;
         this.itemId = itemId;
+        this.quantity = 1;
     }
 
     public CartRead toRead(){
@@ -36,5 +40,13 @@ public class Cart {
                 .id(id)
                 .itemId(itemId)
                 .build();
+    }
+
+    public void addQuantity(int amount) {
+        this.quantity += amount;
+    }
+
+    public void updateQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }

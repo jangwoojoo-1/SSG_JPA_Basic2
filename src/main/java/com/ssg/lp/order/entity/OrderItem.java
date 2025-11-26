@@ -25,11 +25,15 @@ public class OrderItem {
     @CreationTimestamp
     private LocalDateTime created;
 
+    @Column(nullable = false)
+    private Integer quantity;
+
     public OrderItem() {
     }
 
-    public OrderItem(Integer orderId, Integer itemId) {
+    public OrderItem(Integer orderId, Integer itemId, Integer quantity) {
         this.orderId = orderId;
         this.itemId = itemId;
+        this.quantity = quantity;
     }
 }

@@ -7,3 +7,6 @@ create table carts
     item_id int not null comment '상품 아이디',
     created  datetime     not null default current_timestamp() comment '생성 일시'
 ) comment '장바구니 테이블';
+
+ALTER TABLE carts ADD COLUMN quantity INT DEFAULT 1 NOT NULL;
+ALTER TABLE order_items ADD COLUMN quantity INT DEFAULT 1 NOT NULL;

@@ -10,4 +10,6 @@ public interface MemberService {
     void delete(Integer id);
 
     Member findById(Integer id);
+
+    void change(Member member);
 }

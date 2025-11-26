@@ -3,6 +3,7 @@ import {computed, reactive} from "vue";
 import {addOrder} from "@/services/orderService";
 import {useRouter} from "vue-router";
 import {getItems} from "@/services/cartService";
+import {getInfo} from "@/services/accountService.js";
 
 // 라우터 객체
 const router = useRouter(); // ①
@@ -53,8 +54,10 @@ const submit = async () => { // ④
 
 // 커스텀 생성 훅
 (async function onCreated() { // ⑤
+  const info = await getInfo();
+  state.form.name = info.data.name;
+  state.form.address = info.data.address;
   const res = await getItems();
-
   if (res.status === 200) {
     state.items = res.data;
   }

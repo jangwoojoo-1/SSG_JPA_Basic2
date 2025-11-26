@@ -35,4 +35,11 @@ public class MemberServiceImpl implements MemberService {
     public Member findById(Integer id) {
         return memberRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public void change(Member member) {
+        memberRepository.save(member);
+    }
+
+
 }

@@ -23,9 +23,6 @@ const state = reactive({ // ②
 // 커스텀 생성 훅
 (async function onCreated() { // ③
   const id = route.params.id;
-  const info = getInfo();
-  state.order.name = info.data.name;
-  state.order.address = info.data.address;
   const res = await getOrder(id);
 
   if (res.status === 200) {

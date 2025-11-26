@@ -2,6 +2,7 @@ package com.ssg.lp.account.controller;
 
 import com.ssg.lp.account.dto.AccountJoinRequests;
 import com.ssg.lp.account.dto.AccountLoginRequests;
+import com.ssg.lp.account.dto.AccountUpdateRequests;
 import com.ssg.lp.account.helper.AccountHelper;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -61,15 +62,31 @@ public class AccountController {
     }
 
     //회원탈퇴
-    @PostMapping("/api/account/withdraw")
-    public ResponseEntity<?> withdraw(Integer id, HttpServletRequest request) {
-        accountHelper.logout(request);
+    @DeleteMapping("/api/account/withdraw")
+    public ResponseEntity<?> withdraw(HttpServletRequest request) {
+        Integer id = accountHelper.getAccountId(request);
+        if (id == null) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
         accountHelper.withdraw(id);
+        accountHelper.logout(request);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @GetMapping("/api/account/info")
     public ResponseEntity<?> getInfo(HttpServletRequest request) {
         return new ResponseEntity<>(accountHelper.getInfo(request), HttpStatus.OK);
+    }
+
+    //회원 정보 수정
+    @PutMapping("/api/account/info")
+    public ResponseEntity<?> change(HttpServletRequest request, @RequestBody AccountUpdateRequests updateRequest) {
+        Integer memberId = accountHelper.getAccountId(request);
+        if (memberId == null) {
+            return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+        }
+
+        accountHelper.update(memberId, updateRequest);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
