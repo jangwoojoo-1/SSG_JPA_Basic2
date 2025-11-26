@@ -31,6 +31,11 @@ public class OrderItem {
     public OrderItem() {
     }
 
+    public OrderItem(Integer orderId, Integer itemId) {
+        this.orderId = orderId;
+        this.itemId = itemId;
+    }
+
     public OrderItem(Integer orderId, Integer itemId, Integer quantity) {
         this.orderId = orderId;
         this.itemId = itemId;
