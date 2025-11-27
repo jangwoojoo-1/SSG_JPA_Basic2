@@ -30,13 +30,13 @@ instance.interceptors.response.use((res) => {
             }
 
             // (쿠키에 있는) 리프레시 토큰으로 액세스 토큰 요청
-            const res = await axios.get("/v1/api/account/token");
+            const res = await axios.get("/lp/api/account/token");
 
             // 액세스 토큰
             const accessToken = res.data;
 
             // 계정 스토어
-            const accountStore = useAccountStore();
+            const accountStore = useAccount();
 
             // 계정 스토어의 액세스 토큰 변경
             accountStore.setAccessToken(accessToken);
