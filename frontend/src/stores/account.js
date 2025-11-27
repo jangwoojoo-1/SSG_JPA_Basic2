@@ -9,6 +9,7 @@ export const useAccount = defineStore("account", { // ①
         id: 0,
         checked: false, // ②
         loggedIn: false, // ③
+        accessToken: "",
     }),
     actions: {
         setId(val){
@@ -19,6 +20,9 @@ export const useAccount = defineStore("account", { // ①
         },
         setLoggedIn(val) { // ⑤
             this.loggedIn = val;
+        },
+        setAccessToken(val) { // ② 액세스 토큰의 값 수정 메서드
+            this.accessToken = val;
         },
     },
 });

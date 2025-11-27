@@ -7,12 +7,12 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AccountUpdateRequests {
+    private String name;
     private String loginId;
     private String loginPw;
-    private String name;
     private String address;
 
     public Member toEntity(Integer id) {
-        return new Member(id, loginId, loginPw, name, address);
+        return new Member(id, name, loginId, loginPw, address);
     }
 }

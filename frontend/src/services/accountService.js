@@ -1,42 +1,42 @@
 //계정 서비스 구현  : 백엔드 API를 호출해서 회원의 계정 데이터를 처리하는 서비스
 // frontend/src/services/accountService.js
-import axios from "axios";
+import httpRequester from "@/libs/httpRequester";
 
 // 회원가입 : HTTP POST 메서드로 회원가입 API를 호출하고 응답값을 리턴하는 기능
 export const join = (args) => { // ①
-    return axios.post("/lp/api/account/join", args).catch(e => e.response);
+    return httpRequester.post("/lp/api/account/join", args).catch(e => e.response);
 };
 
 // 로그인 : HTTP POST 메서드로 로그인 API를 호출하고 응답값을 리턴하는 기능
 export const login = (args) => { // ②
-    return axios.post("/lp/api/account/login", args).catch(e => e.response);
+    return httpRequester.post("/lp/api/account/login", args).catch(e => e.response);
 };
 
 // 회원 아이디 가져오기
 export const getId = () => { // ②
-    return axios.get("/lp/api/account/id").catch(e => e.response);
+    return httpRequester.get("/lp/api/account/id").catch(e => e.response);
 };
 
 // 로그인 여부 확인 : HTTP GET 메서드로 로그인 여부 확인 API를 호출하고 응닶값을 리턴하는 기능
 export const check = () => { // ③
-    return axios.get("/lp/api/account/check").catch(e => e.response);
+    return httpRequester.get("/lp/api/account/check").catch(e => e.response);
 };
 
 // 로그아웃 : HTTP POST 메서드로 로그아웃 API를 호출하고 응답값을 리턴하는 기능
 export const logout = () => { // ④
-    return axios.post("/lp/api/account/logout").catch(e => e.response);
+    return httpRequester.post("/lp/api/account/logout").catch(e => e.response);
 };
 
 //회원탈퇴 : HTTP POST 메서드로 회원탈퇴 API를 호출하고 응답값을 리턴하는 기능
 export const withdraw = () => {
-    return axios.delete("/lp/api/account/withdraw").catch(e=>e.response);
+    return httpRequester.delete("/lp/api/account/withdraw").catch(e=>e.response);
 }
 
 export const getInfo = () => {
-    return axios.get("/lp/api/account/info").catch(e => e.response);
+    return httpRequester.get("/lp/api/account/info").catch(e => e.response);
 }
 
 // 회원 정보 수정
 export const updateInfo = (args) => {
-    return axios.put("/lp/api/account/info", args).catch(e => e.response);
+    return httpRequester.put("/lp/api/account/info", args).catch(e => e.response);
 }

@@ -7,12 +7,12 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AccountJoinRequests {
+    private String name;
     private String loginId;
     private String loginPw;
-    private String name;
     private String address;
 
     public Member toMember() {
-        return new Member(loginId, loginPw, name, address);
+        return new Member(name, loginId, loginPw, address);
     }
 }

@@ -24,7 +24,8 @@ const maskedLoginId = computed(() => {
 });
 
 const maskedLoginPw = computed(() => {
-  return state.isEditMode ? state.form.loginPw : "*".repeat(state.form.loginPw.length || 8);
+  const pw = state.form.loginPw || ""; // undefined이면 ""로 대체
+  return state.isEditMode ? pw : "*".repeat(pw.length || 8);
 });
 
 // 수정 모드 진입
@@ -51,7 +52,7 @@ const submitUpdate = async () => {
   // 아이디 변경 확인
   if (state.form.loginId !== state.original.loginId) {
     if (!confirm("아이디를 변경하시겠습니까? 저장 후 변경된 아이디로 로그인해야 합니다.")) {
-      return;
+      router.push("/login");
     }
   }
 

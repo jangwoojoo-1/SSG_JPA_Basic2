@@ -52,6 +52,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     @Transactional
     public void order(OrderRequest orderRequest, Integer memberId) {
+        List<CartRead> cart = cartService.findAll(memberId);
         orderRequest.setItemIds(cartService.findAll(memberId).stream().map(CartRead::getItemId).toList());
         List<ItemRead> items = itemService.findAll(orderRequest.getItemIds());
         long amount = 0L;

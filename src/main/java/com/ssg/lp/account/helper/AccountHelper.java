@@ -5,17 +5,18 @@ import com.ssg.lp.account.dto.AccountLoginRequests;
 import com.ssg.lp.account.dto.AccountUpdateRequests;
 import com.ssg.lp.member.entity.Member;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 public interface AccountHelper {
     void join(AccountJoinRequests joinRequests);
 
-    String login(AccountLoginRequests loginRequests, HttpServletRequest request);
+    String login(AccountLoginRequests loginRequests, HttpServletRequest request, HttpServletResponse response);
 
     Integer getAccountId(HttpServletRequest request);
 
     boolean isLoggedIn(HttpServletRequest request);
 
-    void logout(HttpServletRequest request);
+    void logout(HttpServletRequest request, HttpServletResponse response);
 
     void withdraw(Integer id);
 

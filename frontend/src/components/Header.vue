@@ -15,6 +15,7 @@ const logoutAccount = async () => {
   const res = await logout();
 
   if (res.status === 200) { // 백엔드에서 로그아웃이 되면
+    accountStore.setAccessToken("");
     accountStore.setLoggedIn(false);
     await router.push("/"); // Home.vue로 이동
   }
@@ -26,7 +27,7 @@ const logoutAccount = async () => {
     <div class="navbar navbar-dark bg-dark text-white shadow-sm">
       <div class="container">
         <router-link to="/" class="navbar-brand">
-          <strong>Gallery</strong>
+          <strong>LP</strong>
         </router-link>
         <div class="menus d-flex gap-3">
           <!--          로그아웃이 안 되어 있으면-->
